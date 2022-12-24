@@ -8,4 +8,4 @@
 
 set -xe -o pipefail
 
-curl -sL https://registry.access.redhat.com/v2/ubi9/ubi-minimal/tags/list | jq -r '.tags | .[]' | grep -v -P '(latest|source)' | sort | tail -1
+curl -sL https://registry.access.redhat.com/v2/ubi9/ubi-minimal/tags/list | jq -r '.tags | .[]' | grep -v -P '(latest|source)' | sort --version-sort | tail -1
