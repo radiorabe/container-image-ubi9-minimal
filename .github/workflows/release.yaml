@@ -122,7 +122,7 @@ jobs:
 
       - name: Sign the images with GitHub OIDC Token using cosign
         run: cosign sign ${TAGS}
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && startsWith(github.event.ref, 'refs/tags/v')
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
           COSIGN_EXPERIMENTAL: true
