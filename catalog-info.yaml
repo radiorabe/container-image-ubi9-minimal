@@ -1,0 +1,12 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rabe-ubi9-minimal
+  description: RaBe Universal Base Image 9 Minimal
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: specification
+  lifecycle: experimental
+  owner: it-reaktion

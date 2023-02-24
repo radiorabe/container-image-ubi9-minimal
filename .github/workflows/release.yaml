@@ -126,3 +126,10 @@ jobs:
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
           COSIGN_EXPERIMENTAL: true
+
+      - run: pip install mkdocs mkdocs-material mkdocs-gen-files mkdocs-literate-nav mkdocs-section-index
+
+      - run: mkdocs build
+
+      - run: mkdocs gh-deploy
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
