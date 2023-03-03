@@ -83,6 +83,8 @@ jobs:
           labels: |
             ${{ steps.meta.outputs.labels }}
             version=${{ steps.meta.outputs.version }}
+        env:
+          DOCKER_CONTENT_TRUST: 1
             
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
@@ -119,6 +121,8 @@ jobs:
           labels: |
             ${{ steps.meta.outputs.labels }}
             version=${{ steps.meta.outputs.version }}
+        env:
+          DOCKER_CONTENT_TRUST: 1
 
       - name: Sign the images with GitHub OIDC Token using cosign
         run: cosign sign ${TAGS}
