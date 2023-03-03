@@ -1,12 +1,12 @@
 name: Publish Container Images
 
 on:
+  pull_request:
   push:
-    tags:
-      - 'v*.*.*'
     branches:
       - main
-  pull_request:
+  release:
+    type: [created]
 
 jobs:
   docker:
@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@v2.8.1
