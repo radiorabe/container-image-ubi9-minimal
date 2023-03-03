@@ -88,7 +88,7 @@ jobs:
         env:
           DOCKER_CONTENT_TRUST: 1
             
-      - name: Run Trivy vulnerability scanner
+      - name: Run Trivy vulnerability scanner (sarif)
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ghcr.io/radiorabe/ubi9-minimal:${{ steps.meta.outputs.version }}'
@@ -128,6 +128,24 @@ jobs:
 
       - name: Sign the images with GitHub OIDC Token using cosign
         run: cosign sign ${TAGS}
+        if: github.event_name != 'pull_request' && startsWith(github.event.ref, 'refs/tags/v')
+        env:
+          TAGS: ${{ steps.meta.outputs.tags }}
+          COSIGN_EXPERIMENTAL: true
+
+      # see https://github.com/aquasecurity/trivy/issues/3243 for why we run it twice
+      # we create a vuln.jsn if we also plan on uploading it as attestation
+      - name: Run Trivy vulnerability scanner (json)
+        uses: aquasecurity/trivy-action@master
+        if: github.event_name != 'pull_request' && startsWith(github.event.ref, 'refs/tags/v')
+        with:
+          image-ref: 'ghcr.io/radiorabe/ubi9-minimal:${{ steps.meta.outputs.version }}'
+          format: 'cosign-vuln'
+          ignore-unfixed: true
+          output: 'vuln.json'
+
+      - name: Attach a security attestation to the signed image
+        run: cosign attest --type vuln --predicate vuln.json ${TAGS}
         if: github.event_name != 'pull_request' && startsWith(github.event.ref, 'refs/tags/v')
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
