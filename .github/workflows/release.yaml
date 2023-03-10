@@ -5,8 +5,7 @@ on:
   push:
     branches:
       - main
-  release:
-    type: [created]
+    tags:
 
 jobs:
   docker:
