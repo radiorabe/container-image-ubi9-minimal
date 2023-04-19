@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Start Tracee
-        uses: aquasecurity/tracee-action@v0.3.0-start
+        uses: aquasecurity/tracee-action@917a100a58607c453bbdbb14d0f8796bbec076e2
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -162,4 +162,4 @@ jobs:
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
       - name: Stop Tracee
-        uses: aquasecurity/tracee-action@v0.3.0-stop
+        uses: aquasecurity/tracee-action@e114d60efbb7d7a11f2318740304c8cfe2bfc27a
