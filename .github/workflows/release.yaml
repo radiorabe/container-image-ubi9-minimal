@@ -26,6 +26,9 @@ jobs:
       id-token: write # needed for signing the images with GitHub OIDC using cosign
 
     steps:
+      - name: Start Tracee
+        uses: aquasecurity/tracee-action@v0.3.0-start
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -157,3 +160,6 @@ jobs:
 
       - run: mkdocs gh-deploy
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+      - name: Stop Tracee
+        uses: aquasecurity/tracee-action@v0.3.0-stop
