@@ -6,7 +6,11 @@ metadata:
   description: RaBe Universal Base Image 9 Minimal
   annotations:
     backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: radiorabe/container-image-ubi9-minimal
+  links:
+    - url: https://catalog.redhat.com/software/containers/ubi9/ubi-minimal/615bd9b4075b022acc111bf5
+      title: Red Hat Universal Base Image 9 Minimal
 spec:
-  type: specification
+  type: baseimage
   lifecycle: experimental
   owner: it-reaktion
