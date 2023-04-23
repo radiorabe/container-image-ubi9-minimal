@@ -163,5 +163,20 @@ jobs:
       - run: jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"
       - name: Stop Tracee
         uses: aquasecurity/tracee-action@v0.3.0-stop
-      - run: jq .eventName /tmp/tracee-action/signatures.jsonl | sort | uniq
+      - run: |
+          set -xe
+          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          comment=$(cat <<EOF
+          This PR has triggered the signatures:
+          
+          $(jq .eventName /tmp/tracee-action/signatures.jsonl | sort | uniq )
+          
+          Please review the Tracee [documentation](https://aquasecurity.github.io/tracee/v0.10/docs/detecting/rules/) to understand the signatures, and review the details of each trigger on the json below:
+          
+          \`\`\`
+          $(cat /tmp/tracee-action/signatures.jsonl)
+          \`\`\`
+          EOF
+          )
+          echo gh pr comment $pull_number -b "$comment"
         if: always()
