@@ -161,6 +161,7 @@ jobs:
       - run: mkdocs gh-deploy
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       - run: jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"
-      - run: jq .eventName /tmp/tracee-action/signatures.jsonl | sort | uniq
       - name: Stop Tracee
         uses: aquasecurity/tracee-action@v0.3.0-stop
+      - run: jq .eventName /tmp/tracee-action/signatures.jsonl | sort | uniq
+        if: always()
