@@ -164,7 +164,6 @@ jobs:
       - name: Stop Tracee
         uses: aquasecurity/tracee-action@v0.3.0-stop
       - run: |
-          set -xe
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           comment=$(cat <<EOF
           This PR has triggered the signatures:
