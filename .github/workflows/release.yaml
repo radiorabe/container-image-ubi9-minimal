@@ -35,7 +35,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Cosign
-        uses: sigstore/cosign-installer@v2.8.1
+        uses: sigstore/cosign-installer@v3.0.3
 
       - name: Prepare additional Metadata
         id: additional_meta
@@ -134,7 +134,6 @@ jobs:
         if: github.event_name != 'pull_request' && startsWith(github.event.ref, 'refs/tags/v')
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
-          COSIGN_EXPERIMENTAL: true
 
       # see https://github.com/aquasecurity/trivy/issues/3243 for why we run it twice
       # we create a vuln.jsn if we also plan on uploading it as attestation
