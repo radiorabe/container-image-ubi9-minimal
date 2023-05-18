@@ -1,7 +1,6 @@
 name: Run semantic-release
 
 on:
-  pull_request:
   push:
     branches:
       - main
