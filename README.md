@@ -42,7 +42,7 @@ None yet.
 If you need packages from EPEL (like `cowsay`) your have to download an `epel-release` package first:
 
 ```Dockerfile
-RUN    curl -L -O https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/e/epel-release-9-4.el9.noarch.rpm \
+RUN    curl -L -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
     && rpm -ivh ./epel-release-*.noarch.rpm \
     && rm ./epel-release-*.noarch.rpm \
     && microdnf install -y \
