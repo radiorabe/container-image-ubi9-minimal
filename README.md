@@ -2,8 +2,8 @@
 
 The RaBe Universal Base Image 9 Minimal is a stripped down image that uses microdnf for package management.
 
-The image is based on the [Red Hat Universal Base Image 9 Minimal](https://catalog.redhat.com/software/containers/ubi9/ubi-minimal/615bd9b4075b022acc111bf5)
-container provided by Red Hat.
+The image is based on the [AlmaLinux 9 UBI9 variant image](https://github.com/AlmaLinux/docker-images)
+container provided by AlmaLinux and based on the work from [Red Hat](https://catalog.redhat.com/software/containers/ubi9-minimal/61832888c0d15aff4912fe0d).
 
 ## Features
 
@@ -39,12 +39,10 @@ None yet.
 
 ## Advanced Usage
 
-If you need packages from EPEL (like `cowsay`) your have to download an `epel-release` package first:
+If you need packages from EPEL (like `cowsay`) your have to install an `epel-release` package first:
 
 ```Dockerfile
-RUN    curl -L -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
-    && rpm -ivh ./epel-release-*.noarch.rpm \
-    && rm ./epel-release-*.noarch.rpm \
+RUN    microdnf install -y epel-release \
     && microdnf install -y \
          cowsay \
     && microdnf clean all

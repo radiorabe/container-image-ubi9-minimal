@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.2-484
+FROM docker.io/almalinux/9-minimal:9.2-20230512
 
 LABEL maintainer="Radio Bern RaBe"
 
