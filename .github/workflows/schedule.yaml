@@ -6,24 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  updatecli:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install jq in the runner
-        run: |
-          sudo apt-get update
-          sudo apt-get install jq
-
-      - name: Install Updatecli in the runner
-        uses: updatecli/updatecli-action@v2
-
-      - name: Run Updatecli in Apply mode
-        run: updatecli apply
-        env:
-          UPDATECLI_GITHUB_TOKEN: ${{ secrets.RABE_ITREAKTION_GITHUB_TOKEN }}
   call-workflow:
     uses: radiorabe/actions/.github/workflows/schedule-trivy.yaml@v0.11.1
     with:
