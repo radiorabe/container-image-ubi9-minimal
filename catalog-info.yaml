@@ -3,7 +3,13 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: rabe-ubi9-minimal
-  description: RaBe Universal Base Image 9 Minimal
+  title: UBI9 Minimal
+  description: |
+    The RaBe Universal Base Image 9 Minimal is a stripped down image that
+    uses microdnf for package management. It has been configured to trust
+    the RaBe root CA and is ready to be used as a base image for images
+    that need a modern and compatible base image with lifecycle management
+    based on dependabot.
   annotations:
     backstage.io/techdocs-ref: dir:.
     github.com/project-slug: radiorabe/container-image-ubi9-minimal
