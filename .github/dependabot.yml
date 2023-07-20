@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "feat: "
+      prefix: "fix: "
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
