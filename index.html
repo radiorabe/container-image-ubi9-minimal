@@ -419,11 +419,15 @@ container provided by AlmaLinux and based on the work from <a href="https://cata
 <p>Note that <code>libsemanage</code> is being removed because is was installed as a dependency of <code>shadow-utils</code>. We only need them for
 the <code>useradd</code> command so the safe solution is to remove both packages after use.</p>
 <h2 id="downstream-base-images">Downstream Base Images</h2>
-<p>We provide specialised downstream images for select use cases.
-* <a href="https://github.com/radiorabe/container-image-python-minimal">RaBe Python Base Image Minimal</a>
-* <a href="https://github.com/radiorabe/container-image-rabe-s2i-core-minimal">RaBe S2I Core Image Minimal</a>
-  * <a href="https://github.com/radiorabe/container-image-rabe-s2i-base-minimal">RaBe S2I Base Image Minimal</a>
-    * <a href="https://github.com/radiorabe/container-image-rabe-s2i-python-minimal">RaBe S2I Python Image Minimal</a></p>
+<p>We provide specialised downstream images for select use cases.</p>
+<ul>
+<li><a href="https://github.com/radiorabe/container-image-python-minimal">RaBe Python Base Image Minimal</a></li>
+<li><a href="https://github.com/radiorabe/container-image-rabe-s2i-core-minimal">RaBe S2I Core Image Minimal</a></li>
+<li><a href="https://github.com/radiorabe/container-image-rabe-s2i-base-minimal">RaBe S2I Base Image Minimal</a><ul>
+<li><a href="https://github.com/radiorabe/container-image-rabe-s2i-python-minimal">RaBe S2I Python Image Minimal</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="advanced-usage">Advanced Usage</h2>
 <p>If you need packages from EPEL (like <code>cowsay</code>) your have to install an <code>epel-release</code> package first:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">RUN</span><span class="w">    </span>microdnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release<span class="w"> </span><span class="se">\</span>
