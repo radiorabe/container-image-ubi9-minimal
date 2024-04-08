@@ -1,4 +1,4 @@
-FROM docker.io/almalinux/9-minimal:9.3-20231124
+FROM docker.io/almalinux/9-minimal:9.3-20240405
 
 LABEL maintainer="Radio Bern RaBe"
 
