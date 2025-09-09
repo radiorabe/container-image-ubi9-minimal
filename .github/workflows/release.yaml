@@ -10,7 +10,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: radiorabe/actions/.github/workflows/release-container.yaml@v0.34.1
+    uses: radiorabe/actions/.github/workflows/release-container.yaml@v0.35.0
     with:
       image: 'ghcr.io/radiorabe/ubi9-minimal'
       name: 'ubi9-minimal'
@@ -18,6 +18,14 @@ jobs:
       tags: 'minimal rhel9 rabe'
       # disabled because base images are verified via docker content trust
       cosign-verify: false
+      # base images are multi-platform for developer convenience
+      platforms: linux/amd64,linux/arm64
+      docker-daemon-config: |
+        {
+          "features": {
+            "containerd-snapshotter": true
+          }
+        }
   mkdocs:
     runs-on: ubuntu-latest
     permissions:
