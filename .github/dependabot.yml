@@ -16,3 +16,7 @@ updates:
       interval: daily
     commit-message:
       prefix: "chore(ci): "
+    groups:
+      actions:
+        patterns:
+          - "*"
