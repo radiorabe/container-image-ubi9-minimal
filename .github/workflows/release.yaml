@@ -10,7 +10,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: radiorabe/actions/.github/workflows/release-container.yaml@479996126a091287dc3fd349786f6f8a6dd1b23c # v0.42.0
+    uses: radiorabe/actions/.github/workflows/release-container.yaml@3f1ee42ffa54794a512d3989c34e3b4514de64cc # v0.43.1
     with:
       image: 'ghcr.io/radiorabe/ubi9-minimal'
       name: 'ubi9-minimal'
@@ -29,9 +29,9 @@ jobs:
   release-mkdocs:
     permissions:
       contents: write # Required to push the gh-pages branch for documentation deployment
-    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@479996126a091287dc3fd349786f6f8a6dd1b23c # v0.42.0
+    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@3f1ee42ffa54794a512d3989c34e3b4514de64cc # v0.43.1
   github-actions:
     permissions:
       contents: read
       security-events: write # so zizmor can publish results to the Security tab
-    uses: radiorabe/actions/.github/workflows/test-github-actions.yaml@479996126a091287dc3fd349786f6f8a6dd1b23c # v0.42.0
+    uses: radiorabe/actions/.github/workflows/test-github-actions.yaml@3f1ee42ffa54794a512d3989c34e3b4514de64cc # v0.43.1
